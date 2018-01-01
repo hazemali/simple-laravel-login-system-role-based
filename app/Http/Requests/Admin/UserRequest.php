@@ -23,7 +23,7 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        $id=request()->segments()[2];
+        $id=@request()->segments()[2];
 
         if(!$id)
         return [

@@ -27,8 +27,9 @@
 
         @foreach($roles as $role)
         <div class="checkbox">
+            <?php $flag=isset($user)?$user->hasRole($role->name):false;?>
             <label>
-                {!! Form::checkbox('role_id[]',$role->id,@$user->hasRole($role->name),['class'=>'minimal']) !!} {{$role->display_name}}
+                {!! Form::checkbox('role_id[]',$role->id,$flag,['class'=>'minimal']) !!} {{$role->display_name}}
             </label>
         </div>
         @endforeach
@@ -38,5 +39,5 @@
     <div class="box-footer">
         <button type="submit" class="btn btn-success btn-lg">Submit</button>
 
-        <a h="submit" class="btn btn-success btn-lg">Submit</a>
+        <a href="{{route('admin.users.index')}}" class="btn btn-info btn-lg">Back</a>
     </div>
