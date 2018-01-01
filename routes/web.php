@@ -37,6 +37,18 @@ Route::get('/start-application',function (){
 
 
 
+    $permission = new App\Permission();
+    $permission->name         = 'delete-user';
+    $permission->display_name = 'Delete user'; // optional
+// Allow a user to...
+    $permission->description  = 'Role can delete user'; // optional
+    $permission->save();
+
+
+    $superAdmin->attachPermission($permission);
+
+
+
     return 'well done';
 
 
